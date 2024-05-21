@@ -112,10 +112,25 @@ background-size: contain;
 
 img{
     width: 35%;
+    object-fit: cover;
+    border-radius: 200mp;
 }
 
+menu {
+    margin-top: 2rem;
+    flex-direction: column;
+    display: flex;
+    gap: 1rem;
+    a:is(:link, :visited) {
+       color: blue ;
+       background:white;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       gap: 1rem;
 
-
+    }
+}
 
 
 
