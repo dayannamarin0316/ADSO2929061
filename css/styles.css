@@ -86,8 +86,8 @@ body {
                 font-weight: 200;
             }
             h2 {
-                font-size: 4.5rem;
-                font-weight: 200;
+                font-size: 2rem;
+                font-weight: 500;
             }
             h3 {
                 border-radius:20px ;
@@ -111,24 +111,44 @@ background-size: contain;
 }
 
 img{
-    width: 35%;
-    object-fit: cover;
-    border-radius: 200mp;
+    width: 400px;
+    border-radius: 200px;
+    border-radius: 300px;
 }
 
 menu {
     margin-top: 2rem;
     flex-direction: column;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
     a:is(:link, :visited) {
-       color: blue ;
-       background:white;
+       color: black ;
+       background: white;
        display: flex;
-       justify-content: center;
+       gap: 0.6rem;
+       justify-content:start;
+       transition: all 0.4s ease-in;
        align-items: center;
-       gap: 1rem;
+       width: 280px;
+       span{
+          border-radius: 4px 0 0 4px;
+          background-color: purple;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2rem;
+          color: wheat;
+          height: 40px;
+          transition: all 0.4s ease-in;
+          height: 40px;
+          width: 40px;
 
+       }
+    }    
+    a:is(:hover) span {  
+        width: 60px;
     }
 }
 
