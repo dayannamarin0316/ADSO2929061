@@ -17,15 +17,42 @@
    </header>
    <section>
      <h3>example</h3>
-     <p>ul>li>a ⬅</p>
+     <p>header#header>nav.navbar.naubar-inverse>div.container>(div.navbar-header>(button.class=navbar-toggle[type=button]>(span.sr-toggle{toggle navigation})+(span.icon-bar*3))+(a.navbar-brand[href=index.php]>img[src=imge/logo.png][alt]))+(div.collapse>ul.nav.navbar-nav>(li>a.link[href=index.html]{inicio})+(li.active.link>a[href=login.html]{ingresar})+(li>a.link[href=contacto.html]{contacto}))</p>
      <h3>Result</h3>
 <!--------------------------->
        <xmp>
-          <ul>
-            <li><a href=""></a></li>
-          </ul>
-       </xmp>
+<header id="header">
+  <nav class="navbar naubar-inverse">
+    <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle">
+       <span class="sr-toggle">toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+</button>
+ <a href="index.php" class="navbar-brand">
+  <img src="imge/logo.png" alt="">
+    </a>
+    </div>
+    <div class="collapse">
+   <ul class="nav navbar-nav">
+<li>
+<a href="index.html" class="link">inicio</a>
+  </li>
+  <li class="active link">
+  <a href="login.html">ingresar</a>
+</li>
+    <li>
+<a href="contacto.html" class="link">contacto</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+ </header>
    </section>
-  
+   <xmp>
 </body>
 </html>
+    
