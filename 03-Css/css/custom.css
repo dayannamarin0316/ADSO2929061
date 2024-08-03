@@ -1,0 +1,9 @@
+div.title{
+    background-color: rgb(100, 207, 67);
+    border-radius: 1rem;
+    color: black;
+    font-size: 2.8rem;
+    padding: 4rem 1rem;
+    margin-block: 4rem;
+    text-align: center;
+}
