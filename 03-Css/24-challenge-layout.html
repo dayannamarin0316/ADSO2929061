@@ -1,161 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>24-challenge  layout (Sprite)</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sprite</title>
     <style>
-      body {
-        border: 10px solid #ffffff;
-        background-color: #179f53;
-        font-family: sans-serif;
-        margin: 0;
-      }
-      header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      header figure.logo {
-        background: url(../imagenes/spriteweb.logo.png) no-repeat;
-        background-position:  -10px -398px;
-        height: 192px;
-        width: 192px;
-      }
-      header menu {
-        display: flex;
-        gap: 1.2rem;
-        margin: 0;
-        padding: 0;
-      }
-      header menu a:is(:link, :visited) {
-        color: #fff;
-        background-color: #0006;
-        border-bottom: 4px solid #fff;
-        padding: 1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-        text-align: center;
-        transition: all 0.5s ease-in;
-        width: 120px;
-      }
-      header menu a:is(:hover) {
-        background-color: #0009;
-        border-bottom: 4px solid #ff0;
-      }
-      section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2rem;
-      }
-      .images {
-        width: 823px;
-        height: 200px;
-        display: flex;
-        padding: 5px 5px 10px 5px;
-        background-color: #0009;
-        .spam1 {
-            background: url(../imagenes/spriteweb.logo.png);
-            background-position: 300px -15px;
-            width: 300px;
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+        html {
+            border: 7px solid white;
+        }
+        body {
+            background-color: #17a053;
+            
+            font-family: "Poppins", sans-serif;
+        }
+
+        div.logo {
+            background: url(../imagenes/Spriteweb.logo.png) no-repeat;
+            background-position: -10px -400px;
+            height: 190px;
+            margin: 0 auto;
+            width: 190px;
+        }
+
+        menu {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            padding: 0;
+        }
+
+        menu a {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            text-decoration: none;
+            border-bottom: 7px white solid;
+            text-transform: uppercase;
+        }
+
+        menu a:hover {
+            background-color: rgb(3, 3, 3, 0.692);
+            border-bottom: 7px solid rgb(221, 221, 59);
+        }
+
+        div.images {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            margin: 0 auto;
+            width: 900px;
+            padding: 10px;
+        }
+
+        div.sprites {
+            background: url(../imagenes/Spriteweb.logo.png) no-repeat;
+            background-position: -480px -5px;
+            display: flex;
+            justify-content: center;
             margin: 10px;
-            border: #ffffff 4px solid;
+            height: 200px;
+            width: 328px;
+            border: 2px solid white;
         }
-        .spam2 {
-            background-color: #fff5;
+
+        div figcaption {
+            text-align: center;
+            color: black;
+            font-size: x-large;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.404);
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 50px;
-            text-align: center;
-            display: flex;
-            transition: all 0.5s ease-in;
+            width: 100%;
+            height: 60px;
         }
-        .spam2:is(:hover) {
-            background-color: #fff9;
+
+        div.sprites:hover figcaption {
+            background-color: rgba(255, 255, 255, 0.808);
+        }
+
+        section.first {
+            background-color: rgba(0, 0, 0, 0.4);
+            margin: 0 auto;
+            width: 900px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        div.info {
+            background-color: white;
+            display: flex;
+            gap: 35px;
             justify-content: center;
             align-items: center;
-            height: 50px;
-            text-align: center;
-            display: flex;
-            transition: all 0.5s ease-in;
+            height: 200px;
+            margin-bottom: 10px 0;
         }
-      }
-      footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        width: 836px;
-        margin: 0 auto;
-        margin-top: 2rem;
-      }
-      footer figure.logo {
-        background: url(../imagenes/spriteweb.logo.png) no-repeat;
-        background-position:  -474px -416px;
-        height: 185px;
-        width: 330px;
-      }
-      footer menu {
-        display: flex;
-        gap: 1.2rem;
-        margin: 0;
-        padding: 0;
-      }
-      footer menu a:is(:link, :visited) {
-        color: #080808;
-        background-color: #fff;
-        border-bottom: 4px solid #fff;
-        padding: 1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-        text-align: center;
-        transition: all 0.5s ease-in;
-        width: 120px;
-      }
-      footer menu a:is(:hover) {
-        background-color: #0009;
-        border-bottom: 4px solid #ff0;
-      }
+
+        div aside {
+            background: url(../imagenes/Spriteweb.logo.png) no-repeat;
+            width: 20%;
+        }
+
+        div p {
+            width: 60%;
+            text-align: justify;
+            line-height: 1.5em;
+        }
+
+        div p:hover {
+            color: #572586;
+        }
+
+        div aside.first {
+            background-position: -282px -499px;
+            height: 95px;
+            width: 109px;
+        }
+
+        div aside.second {
+            background-position: -88px -210px;
+            height: 173px;
+            width: 109px;
+        }
+
+        footer {
+            width: 915px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            gap: 2.5rem;
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        div.third {
+            background: url(../imagenes/Spriteweb.logo.png) no-repeat;
+            background-position: -500px -420px;
+            height: 180px;
+            width: 245px;
+        }
+
+        div.link {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+        }
+
+        div.link a {
+            text-decoration: none;
+            color: black;
+            font-size: medium;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            padding-bottom: 10px;
+            border-bottom: 7px solid white
+        }
+
+        div.link a:hover {
+            border-bottom: 7px solid #156b3a;
+        }
+    
     </style>
 </head>
+
 <body>
     <main>
-        <header>
-            <figure class="logo"> </figure>
-            <menu>
-                <a href="#">Home</a>
-                <a href="#">Abaut</a>
-                <a href="#">Portfolio</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
-            </menu>
-        </header>
+        <div class="logo"></div>
+        <menu>
+            <a href="#">Home</a>
+            <a href="#">Abaut</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </menu>
         <section>
             <div class="images">
-                <spam class="spam1">
-                    <spam class="spam2">Sprite 01</spam>
-                </spam>
-                <spam class="spam1">
-                    <spam class="spam2">Sprite 02</spam>
-                </spam>
-                <spam class="spam1">
-                    <spam class="spam2">Sprite 03</spam>
-                </spam>
+                <div class="sprites">
+                    <figcaption>Sprite 01</figcaption>
+                </div>
+                <div class="sprites">
+                    <figcaption>Sprite 02</figcaption>
+                </div>
+                <div class="sprites">
+                    <figcaption>Sprite 03</figcaption>
+                </div>
             </div>
         </section>
+        <br />
+        <section class="first">
+            <div class="info">
+                <aside class="first"></aside>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum fugit aliquam impedit magnam quod, maxime deserunt cupiditate ratione ea saepe odit quasi culpa quam dolor voluptatibus reprehenderit quis a iusto corrupti hic placeat dolores aut! Dolorum ipsam architecto tempora blanditiis, accusantium pariatur omnis sunt enim error dolor quas, consequatur cupiditate eius necessitatibus, quidem corrupti officiis reprehenderit voluptate perspiciatis magni nostrum!
+                </p>
+                <aside class="second"></aside>
+            </div>
+            <div class="info">
+                <aside class="first"></aside>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum fugit aliquam impedit magnam quod, maxime deserunt cupiditate ratione ea saepe odit quasi culpa quam dolor voluptatibus reprehenderit quis a iusto corrupti hic placeat dolores aut! Dolorum ipsam architecto tempora blanditiis, accusantium pariatur omnis sunt enim error dolor quas, consequatur cupiditate eius necessitatibus, quidem corrupti officiis reprehenderit voluptate perspiciatis magni nostrum!
+                </p>
+                <aside class="second"></aside>
+            </div>
+            <div class="info">
+                <aside class="first"></aside>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum fugit aliquam impedit magnam quod, maxime deserunt cupiditate ratione ea saepe odit quasi culpa quam dolor voluptatibus reprehenderit quis a iusto corrupti hic placeat dolores aut! Dolorum ipsam architecto tempora blanditiis, accusantium pariatur omnis sunt enim error dolor quas, consequatur cupiditate eius necessitatibus, quidem corrupti officiis reprehenderit voluptate perspiciatis magni nostrum!
+                </p>
+                <aside class="second"></aside>
+            </div>
+        </section>
+        <br />
         <footer>
-            <figure class="logo"> </figure>
-            <menu>
+            <div class="third"></div>
+            <div class="link">
                 <a href="#">Home</a>
                 <a href="#">Abaut</a>
                 <a href="#">Portfolio</a>
                 <a href="#">Services</a>
                 <a href="#">Contact</a>
-            </menu>
+            </div>
         </footer>
     </main>
 </body>
