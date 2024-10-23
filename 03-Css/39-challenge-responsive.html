@@ -21,6 +21,8 @@
             margin: 0 100px 0 100px;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+
         }
 
         .images {
@@ -30,15 +32,28 @@
             display: flex;
             padding: 5px 5px 10px 5px;
 
-            div.sprites:is(:hover) .spam2 {
-                background-color: rgba(236, 230, 230, 0.975);
-                justify-content: center;
-                align-items: center;
-                height: 50px;
-                text-align: center;
+            div.two{
                 display: flex;
-                transition: all 0.5s ease-in;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
+
+           div.goku:hover figcaption{
+            height: 70px;
+            transition: all ease-in 0.4s;
+           }
+           div.vegeta:hover figcaption{
+            height: 70px;
+            transition: all ease-in 0.4s;
+           }
+           div.frezzer:hover figcaption{
+            height: 70px;
+            transition: all ease-in 0.4s;
+           }
+           div.bulma:hover figcaption{
+            height: 70px;
+            transition: all ease-in 0.4s;
+           }
 
             div.goku {
                 background: url(../imagenes/goku.jpg);
@@ -111,93 +126,153 @@
             margin: 0;
             padding: 0;
         }
-         div.all{
+
+        div.all {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      div.text {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        background-color: #ffffff93;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+
+        div.ci {
+          display: flex;
+          flex-direction: column;
+          width: 450px;
+          
+          align-items: center;
         }
 
+        img {
+          width: 314px;
+
+
+        }
+
+
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      div.ci {
+        width: 400px;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      div.all {
         div.text {
-            display: flex;
-            flex-direction: row;
-            margin-left: 300px;
-            background-color: #ffffff93;
-            width: 900px;
-            margin-top: 20px;
+          padding-left: 30px;
+          padding-right: 30px;
+          img {
+            width: 250px;
 
-            img {
-                width: 200px;
-                height: 200px;
-            }
-
-            div {
-                height: 200px;
-                display: flex;
-                flex-direction: column;
-                margin-left: 20px;
-            }
+          }
         }
+
+      }
+    }
+
+    @media (max-width: 576px) {
+
+      div.ci {
+        width: 300px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+      }
+
+      div.all {
+        div.text {
+          padding-left: 30px;
+          padding-right: 30px;
+          img {
+            width: 150px;
+          }
+        }
+
+      }
+    }
     </style>
 </head>
 
 <body>
+
     <main>
         <div class="logo"><img src="../imagenes/dragon ball..png" alt="Brabon ball z"></div>
         <section class="images">
             <div class="images">
-                <div class="goku">
-                    <figcaption>01 Goku</figcaption>
+                <div class="two">
+                    <div class="goku">
+                        <figcaption>01 Goku</figcaption>
+                    </div>
+                    <div class="vegeta">
+                        <figcaption>02 Vegeta</figcaption>
+                    </div>
                 </div>
-                <div class="vegeta">
-                    <figcaption>02 Vegeta</figcaption>
+                <div class="two">
+                    <div class="frezzer">
+                        <figcaption>03 Frezzer</figcaption>
+                    </div>
+                    <div class="bulma">
+                        <figcaption>04 Bulma</figcaption>
+                    </div>
                 </div>
-                <div class="frezzer">
-                    <figcaption>03 Frezzer</figcaption>
-                </div>
-                <div class="bulma">
-                    <figcaption>04 Bulma</figcaption>
-                </div>
+                
             </div>
         </section>
         <br />
         <div class="all">
-            <div class="seccion">
-    
+            
+            <div class="text">
+                <img src="../imagenes/vegeta.jpg" alt="">
+                <div class="ci">
+                    <h3>Principe Vegeta XI</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi, sapiente quibusdam
+                        architecto iusto quo, officiis minus facere dolorum cumque odio, quaerat ducimus qui aspernatur
+                        debitis quis quidem distinctio iure.</p>
+                </div>
             </div>
             <div class="text">
-              <img src="../imagenes/vegeta.jpg" alt="">
-              <div>
-                <h3>Principe Vegeta XI</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi, sapiente quibusdam architecto iusto quo, officiis minus facere dolorum cumque odio, quaerat ducimus qui aspernatur debitis quis quidem distinctio iure.</p>
-              </div>
-            </div>
-            <div class="text">
-              <img src="../Imagenes/goku.jpg" alt="">
-              <div>
-                <h3>Son Goku</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa accusantium earum tempora quibusdam atque aliquid saepe facere doloremque perspiciatis hic? Aliquid tempora voluptates quibusdam impedit porro labore, quaerat minus ab?</p>
-              </div>
+                <img src="../Imagenes/goku.jpg" alt="">
+                <div class="ci">
+                    <h3>Son Goku</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa accusantium earum tempora
+                        quibusdam atque aliquid saepe facere doloremque perspiciatis hic? Aliquid tempora voluptates
+                        quibusdam impedit porro labore, quaerat minus ab?</p>
+                </div>
             </div>
             <div class="text">
                 <img src="../Imagenes/bulma.jpg" alt="">
-                <div>
-                  <h3>La científica Bulma</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti saepe dolor neque, eligendi, libero iste in, architecto fuga non molestias sequi quaerat dicta maxime delectus aliquam consequuntur ab numquam harum.</p>
+                <div class="ci">
+                    <h3>La científica Bulma</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti saepe dolor neque, eligendi,
+                        libero iste in, architecto fuga non molestias sequi quaerat dicta maxime delectus aliquam
+                        consequuntur ab numquam harum.</p>
                 </div>
-              </div>
-              <div class="text">
+            </div>
+            <div class="text">
                 <img src="../Imagenes/friezar.jpg" alt="">
-                <div>
-                  <h3>El congelador Frezzer</h3>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis alias repudiandae aliquid, voluptatem error vero dolorem? Laborum sed ad nostrum ex eveniet! Non eius odit fugiat illum voluptatum, in sunt?</p>
+                <div class="ci">
+                    <h3>El emperador Frezzer</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis alias repudiandae aliquid,
+                        voluptatem error vero dolorem? Laborum sed ad nostrum ex eveniet! Non eius odit fugiat illum
+                        voluptatum, in sunt?</p>
                 </div>
-              </div>
-    
-    
-          </div>
-       
+            </div>
+
+
+        </div>
+
     </main>
 
 </body>
 
 </html>
-lorem200
