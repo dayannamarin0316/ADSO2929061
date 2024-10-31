@@ -5,6 +5,19 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
         link(rel="stylesheet", href="../../css/styles.css")
+        style.
+            article {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            h4 {
+                font-size: 2rem;
+            }
+            figure {
+                zoom: 8;
+            }
     body.pug
         nav 
             a(href="../index.html")
@@ -15,3 +28,11 @@ html(lang="en")
                 h1 00-Template
                 p parrafo 
             section 
+            - var auth =  false
+                article
+                    if auth
+                        h4 Authorized
+                        figure ✅
+                    else
+                        h4 Not Authorized
+                        figure 🚫
