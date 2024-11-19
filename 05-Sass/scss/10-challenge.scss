@@ -1,4 +1,49 @@
-#menu__toggle {
+
+h1{
+  position: absolute;
+  right: 20px;
+}
+body {
+  display: flex;
+  background-color: #bb91b9;
+  margin: 0;
+}
+h1 {
+  display: flex;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  position: absolute;
+  right: 300px;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: end;
+  background-color: #3b0f39;
+  padding: 20px;
+  margin-block-start: 0;
+  margin-left: 1rem;
+  list-style: none;
+}
+a {
+  font-size: 1.5rem;
+  color: #ECEFF1;
+}
+li {
+  color: rgb(177, 72, 154);
+  padding-left: 1%;
+}
+@media (min-width: 577px) {
+ #menu__toggle{
+  display: none;
+ }
+}
+@media (max-width: 576px) {
+  #menu__toggle {
     opacity: 0;
   
     &:checked {
@@ -88,3 +133,4 @@
     }
   }
   
+}
