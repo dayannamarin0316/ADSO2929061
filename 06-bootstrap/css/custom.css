@@ -64,3 +64,7 @@ div.row.about {
        
     }
 }
+/* Services section */
+div.row.services {
+    background-color: #81527A;
+}
