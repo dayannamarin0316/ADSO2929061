@@ -68,3 +68,15 @@ div.row.about {
 div.row.services {
     background-color: #81527A;
 }
+
+/* Portfolio */
+div.row.portfolio {
+    background-color: #DCB4D7;
+}
+.bg-gray-500{
+    background-color: #7C7676;
+}
+
+.footer{
+    background-color: #40243C;
+}
