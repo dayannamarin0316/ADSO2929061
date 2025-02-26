@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'Poppins-400';
+    src: url(../../fonts/Poppins-400.ttf);
+}
+@font-face {
+    font-family: 'Poppins-600';
+    src: url(../../fonts/Poppins-600.ttf);
+}
+body {
+    font-family: Poppins-400;
+}
+nav.navbar.bg-custom {
+    background-color: #641559;
+    a.navbar-brand{
+        color: #fde9f0;
+    }
+    a.nav-link{
+        color: #EFCED9;
+    }
+}
+/* Hero section */
+div.row.hero {
+    padding-top: 80px;
+    div.col:nth-child(1){
+        background-color: #81527A;
+        height: 680px;
+        h2, h3, p{
+            color: #000000;
+        }
+        p.text-justify {
+            text-align: justify;
+        }
+        a.btn.bg-custom {
+            background-color: #350F30;
+            color: #F5DDE5;
+        }
+    }
+    div.col:nth-child(2) {
+        background: #c496a3 url(../06-challenge/imagenes/hero-picture.png) no-repeat center bottom;
+        height: 680px;
+       
+    }
+}
+/* About section */
+div.row.about {
+    div.col:nth-child(2){
+        background-color: #BB74B2;
+        height: 680px;
+        padding: 50px;
+        gap: 1rem;
+        h2, h3, p{
+            color: #000000;
+        }
+        p.text-justify {
+            text-align: justify;
+        }
+        .progress-bar.bg-custom {
+            background-color: #641559;
+        }
+    }
+    div.col:nth-child(1) {
+        background: #BB74B2 url(../06-challenge/imagenes/about.png) no-repeat center bottom;
+        height: 680px;
+       
+    }
+}
