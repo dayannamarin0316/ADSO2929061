@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>08 - Javascript</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="imagenes/favicon.ico" type="imagenes/x-icon">
 </head>
 
 <body class="js">
@@ -21,140 +21,60 @@
     </nav>
     <main>
         <header>
-            <h1>08 - Javascript</h1>
-            <h2>Lorem ipsum dolor sit.</h2>
-            <img src="imagenes/logo-js.png" alt="Javascript">
-
+            <h1>07- Tailwind 4.0</h1>
+            <h2>A utility-first CSS framework packed with classes</h2>
+            <img src="../images/logo-tailwind.png" alt="Tailwind">
         </header>
-        <menu class="menu">
-
+        <menu>
+            <a href="01-layout.html">
+                <span>01</span>
+                Layout
+            </a>
+            <a href="02-flex-grid.html">
+                <span>02</span>
+                Flex & Grid
+            </a>
+            <a href="03-spacing.html">
+                <span>03</span>
+                Spacing
+            </a>
+            <a href="04-sizing.html">
+                <span>04</span>
+                Sizing
+            </a>
+            <a href="05-typography.html">
+                <span>05</span>
+                Typography
+            </a>
+            <a href="06-backgrounds.html">
+                <span>06</span>
+                Backgrounds
+            </a>
+            <a href="07-borders.html">
+                <span>07</span>
+                Borders
+            </a>
+            <a href="08-effects.html">
+                <span>08</span>
+                Effects
+            </a>
+            <a href="09-filters.html">
+                <span>09</span>
+                Filters
+            </a>
+            <a href="10-tables.html">
+                <span>10</span>
+                Tables
+            </a>
+            <a href="11-transform.html">
+                <span>11</span>
+                Transforms
+            </a>
+            <a href="12-challenge.html" target="_blank">
+                <span>12</span>
+                Challenge
+            </a>
         </menu>
     </main>
 </body>
-<script>
-    const menu = document.querySelector('menu')
-    const links = [
-        {
-            url: '01-write.html',
-            text: 'Write'
-        },
-        {
-            url: '02-comments.html',
-            text: 'Comments'
-        },
-        {
-            url: '03-get-elements.html',
-            text: 'Get Elements'
-        },
-        {
-            url: '04-variables.html',
-            text: 'Variables'
-        },
-        {
-            url: '05-methods-object.html',
-            text: 'Methods Object'
-        },
-        {
-            url: '06-types-objects.html',
-            text: 'Types Objects'
-        },
-        {
-            url: '07-vehicle-object.html',
-            text: 'Vehicle Object'
-        },
-        {
-            url: '08-functions.html',
-            text: 'Functions'
-        },
-        {
-            url: '09-challenge-calculator.html',
-            text: 'Challenge Calculator'
-        },
-        {
-            url: '10-operators-arithmetics.html',
-            text: 'Operators Arithmetics'
-        },
-        {
-            url: '11-operators-assignment.html',
-            text: 'Operators Assigment'
-        },
-        {
-            url: '12-operators-comparison.html',
-            text: 'Operators Comparison'
-        },
-        {
-            url: '13-operators-logical.html',
-            text: 'Operators Logical'
-        },
-        {
-            url: '14-conditionals.html',
-            text: 'Conditionals'
-        },
-        {
-            url: '15-challenge-conditionals.html',
-            text: 'Challenge Conditionals'
-        },
-        {
-            url: '16-loops.html',
-            text: 'Loops'
-        },
-        {
-            url: '17-pokedex-api.html',
-            text: 'Pokedex API'
-        },
-        {
-            url: '18-events.html',
-            text: 'Events'
-        },
-        {
-            url: '19-methods-strings.html',
-            text: 'Methods Strings'
-        },
-        {
-            url: '20-methods-numbers.html',
-            text: 'Methods Numbers'
-        },
-        {
-            url: '21-methods-mathematics.html',
-            text: 'Methods Mathematics'
-        },
-        {
-            url: '22-challenge-baloto.html',
-            text: 'Challenge Baloto'
-        },
-        {
-            url: '23-methods-dates.html',
-            text: 'Methods Dates'
-        },
-        {
-            url: '24-methods-arrays.html',
-            text: 'Methods Arrays'
-        },
-        {
-            url: '25-challenge-arrays.html',
-            text: 'Challenge Arrays'
-        },
-        {
-            url: '26-events-time.html',
-            text: 'Events Time'
-        },
-        {
-            url: '27-challenge-events-time.html',
-            text: 'Challente Events Time'
-        },
-        {
-            url: '28-pop-up-windows.html',
-            text: 'Pop-Up Windows'
-        }
-    ]
-
-    links.forEach(renderLink)
-
-    function renderLink(item, index) {
-        number = index < 9 ? '0' + (index + 1) : index + 1
-        menu.innerHTML += "<a href='" + item.url + "'><span>" + number + "</span> " + item.text + "</a>"
-    }
-
-</script>
-
 </html>
