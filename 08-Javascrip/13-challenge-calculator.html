@@ -30,7 +30,7 @@
           position: absolute;
           top: 8px;
           height: 36px;
-          width: 100px;
+          width: 100%;
           transition: transform 0.2s ease-in;
 
           &:hover {
@@ -144,6 +144,10 @@
                     input.operation{
                         color: #fff;
                     }
+                    .btn-mode{
+                      background: url(imagenes/calculator/dark-mode.svg) no-repeat center center;
+                      width: 100%;
+                    }
                     h4.result{
                         color: #fff;
                     }
@@ -175,7 +179,7 @@
   <main>
     <header>
       <h1>13-challenge-calculator</h1>
-      <h2></h2>
+      <h2>Combine conditions using logical operators.</h2>
     </header>
     <section>
       <div class="calculator">
@@ -219,7 +223,18 @@
     const btnDel = document.querySelector('button.btn-del')
     const btnEqual = document.querySelector('button.btn-equal')
     const btnMode = document.querySelector('button.btn-mode')
+    const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
+        darkMode.addListener(darkModeChange)
 
+        function darkModeChange(dm) {
+            if (dm.matches) {
+                calculator.classList.add('dark')
+            } else {
+                calculator.classList.remove('dark')
+            }
+        }
+        darkModeChange(darkMode)
+        
    //Events 
    btnClear.addEventListener('click', (e) => {
             operation.value = ''
