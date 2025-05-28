@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-loops</title>
+    <link rel="shortout icon" href="favicon.ico" type="imagenes/x-icon"> 
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        section ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            display: flex;
+            gap: 0.4rem;
+            li {
+                background-color: rgb(164, 177, 49);
+                padding: 0.4rem;
+                border-radius: 0.2rem;
+                text-align: center;
+                min-width: 40px;
+            }
+        }
+    </style>
+  </head>
+  <body class="js">
+
+    <nav>
+        <a href="../index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <path fill="#ffffff" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"></path>
+        </svg>
+      </a>
+    </nav>
+    <main>
+      <header>
+        <h1>17-loops</h1>
+        <h2>Repeat actions ising loops </h2>
+      </header>
+      <section>
+          <h3>Loop (for)</h3>
+          <small>Print even numbers from 0 to 10</small>
+          <ul class="even-numbers"></ul>
+          <h3>loop (for in)</h3>
+          <small>Print objects propierties</small>
+          <ul class="props-object"></ul>
+          <h3>Loop (while)</h3>
+          <small>Print multiples of 5 from 0 tol 25</small>
+          <ul class="mult-five"></ul>
+          <h3>Loop (Do while)</h3>
+          <small>Print factorial (N!) of 5</small>
+          <ul class="fact-number"></ul>
+          <h3>(Break)</h3>
+          <small>Print fibonaci sequence (10 + 89)</small>
+          <ul class="fibo-sec"></ul>
+      </section>
+    </main>
+    <script>
+        //Elements
+        const evenNumbers = document.querySelector('.even-numbers');
+        const propsObject = document.querySelector('.props-object');
+        const multFive = document.querySelector('.mult-five');
+        const factNumber = document.querySelector('.fact-number')
+
+
+        //Object
+        const bestAnimes = {
+            "year": 2025,
+            "title": 'Solo Leveling',
+            "type": 'Mangua',
+            "origin": 'South Korea'
+        }
+        //Loop (for)
+        for(let i=0; i<=10; i++) {
+            if(i%2 == 0) {
+            evenNumbers.innerHTML += `<li>${i}</li>`
+            }
+        }
+
+        //Loop (forin)
+        for(bestAnime in bestAnimes) {
+            propsObject.innerHTML += `<li>${bestAnime}:
+                                          ${bestAnimes[bestAnime]}
+                                        </li>`
+        }
+
+        //Loop (while)
+        let i = 0
+        while (i<=25) {
+            if(i%5 == 0) {
+                multFive.innerHTML += `<li>${i}</li>`
+            }  
+             i++
+        }
+
+        //Loop (do while)
+        let n = 5;
+        let fact = 1;
+        do {
+            fact *= n;
+            n--;
+        } while (n > 0);
+        factNumber.innerHTML += `<li>${fact}</li>`;
+
+    </script>
+  </body>
+  
+</html
