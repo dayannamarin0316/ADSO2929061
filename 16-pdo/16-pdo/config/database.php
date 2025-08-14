@@ -57,3 +57,41 @@
             echo 'Error: ' . $e->getMessage();
         }
     }
+
+    // List Species 
+    function listSpecies($conx){
+        try{
+            $sql = "SELECT * FROM species";
+             $stmt = $conx->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    // Breeds
+
+     function listBreeds($conx){
+        try{
+            $sql = "SELECT * FROM breeds";
+             $stmt = $conx->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    // Sexes
+
+    function listSexes($conx){
+        try{
+            $sql = "SELECT * FROM sexes";
+             $stmt = $conx->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
