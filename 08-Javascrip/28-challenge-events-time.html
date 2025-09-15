@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>28 - Challenge</title>
+  <link rel="stylesheet" href="../css/Styles.css">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <style>
+    .game-container {
+      width: max-content;
+      margin: 0 auto;
+      padding: 10px;
+      border-radius: 10px;
+      background-image: url(imagenes/frutaa.jpg); 
+      background-size: cover;
+      background-position: center;
+    }
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 100px); /* 4 columnas */
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      width: 100px;
+      height: 100px;
+      background: #c48adb; 
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      color: transparent;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .card.flipped {
+      background: #3d3d3df5;
+      color: #333;
+      cursor: default;
+    }
+    .card.matched {
+      background: #f8a5c2; 
+      color: #333;
+      cursor: default;
+    }
+    .info {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    /* opcional para centrar el iframe */
+    .figma-embed {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body class="js">
+  <nav>
+    <a href="index.html"></a>
+  </nav>
+  <main>
+    <header>
+      <h1>28 - Challenge</h1>
+      <h2>Crea desafíos interactivos basados en tiempo</h2>
+    </header>
+    <section>
+      <h3>Juego de Memoria</h3>
+      <div class="info">
+        Tiempo restante: <span id="timeLeft">40</span> s
+      </div>
+
+      <div class="game-container">
+        <div class="game-board" id="gameBoard"></div>
+      </div>
+
+      <div class="info" id="message"></div>
+    </section>
+
+    
+    <div class="figma-embed">
+      <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+        width="500" height="400" 
+        src="https://embed.figma.com/design/2jECVTZ9Tt9ZocaKvlStHb/Untitled?node-id=0-1&embed-host=share" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </main>
+
+  <script>
+    // 8 pares (16 cartas)
+    const symbols = [
+      '🍎','🍌','🍇','🍓','🍑','🍍','🥝','🍉',
+      '🍎','🍌','🍇','🍓','🍑','🍍','🥝','🍉'
+    ];
+
+    const gameBoard = document.getElementById('gameBoard');
+    const timeLeftSpan = document.getElementById('timeLeft');
+    const messageDiv = document.getElementById('message');
+
+    let firstCard = null;
+    let secondCard = null;
+    let lockBoard = false;
+    let timer;
+    let timeRemaining = 40; 
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function createBoard() {
+      const shuffled = shuffle([...symbols]);
+      shuffled.forEach(symbol => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.textContent = symbol;
+        card.dataset.symbol = symbol;
+        gameBoard.appendChild(card);
+      });
+     
+      document.querySelectorAll('.card').forEach(card => card.classList.add('flipped'));
+      
+      setTimeout(() => {
+        document.querySelectorAll('.card').forEach(card => {
+          card.classList.remove('flipped');
+          card.addEventListener('click', flipCard);
+        });
+        startTimer();
+      }, 5000);
+    }
+
+    function flipCard() {
+      if (lockBoard) return;
+      if (this === firstCard) return;
+
+      this.classList.add('flipped');
+
+      if (!firstCard) {
+        firstCard = this;
+        return;
+      }
+
+      secondCard = this;
+      checkForMatch();
+    }
+
+    function checkForMatch() {
+      const isMatch = firstCard.dataset.symbol === secondCard.dataset.symbol;
+      isMatch ? disableCards() : unflipCards();
+    }
+
+    function disableCards() {
+      firstCard.classList.add('matched');
+      secondCard.classList.add('matched');
+      firstCard.removeEventListener('click', flipCard);
+      secondCard.removeEventListener('click', flipCard);
+      resetBoard();
+      checkWin();
+    }
+
+    function unflipCards() {
+      lockBoard = true;
+      setTimeout(() => {
+        firstCard.classList.remove('flipped');
+        secondCard.classList.remove('flipped');
+        resetBoard();
+      }, 800);
+    }
+
+    function resetBoard() {
+      [firstCard, secondCard, lockBoard] = [null, null, false];
+    }
+
+    function startTimer() {
+      timer = setInterval(() => {
+        timeRemaining--;
+        timeLeftSpan.textContent = timeRemaining;
+        if (timeRemaining <= 0) {
+          clearInterval(timer);
+          endGame();
+        }
+      }, 1000);
+    }
+
+    function endGame() {
+      document.querySelectorAll('.card').forEach(card => {
+        card.removeEventListener('click', flipCard);
+      });
+      messageDiv.textContent = '¡Se acabó el tiempo!';
+     
+      setTimeout(() => {
+        if (confirm('Se acabó el tiempo. ¿Volver a jugar?')) {
+          window.location.reload();
+        }
+      }, 500);
+    }
+
+    function checkWin() {
+      const allMatched = [...document.querySelectorAll('.card')].every(c => c.classList.contains('matched'));
+      if (allMatched) {
+        clearInterval(timer);
+        messageDiv.textContent = '¡Has ganado!';
+      }
+    }
+
+    createBoard();
+  </script>
+</body>
+</html>
