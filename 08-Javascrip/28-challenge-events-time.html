@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>28 - Challenge</title>
-  <!-- CSS global desde /css -->
   <link rel="stylesheet" href="/css/Styles.css">
-  <!-- Favicon desde /images -->
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   <style>
     body {
@@ -16,7 +14,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #fff; /* fondo blanco o el que tengas en Styles.css */
+      background: #fff; 
     }
 
     main {
@@ -85,7 +83,7 @@
       margin-top: 10px;
     }
 
-    /* Overlay */
+
     .overlay {
       position: absolute;
       top: 0;
@@ -281,8 +279,6 @@
         messageDiv.textContent = '¡Has ganado!';
       }
     }
-
-    // solo creamos el tablero pero invisible
     createBoard();
 
     startBtn.addEventListener('click', startGame);
