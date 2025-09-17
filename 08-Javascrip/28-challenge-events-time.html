@@ -4,9 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>28 - Challenge</title>
-  <link rel="stylesheet" href="../css/Styles.css">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- CSS global desde /css -->
+  <link rel="stylesheet" href="/css/Styles.css">
+  <!-- Favicon desde /images -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff; /* fondo blanco o el que tengas en Styles.css */
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px;
+    }
+
     .game-container {
       width: max-content;
       margin: 0 auto;
@@ -67,7 +85,7 @@
       margin-top: 10px;
     }
 
-    
+    /* Overlay */
     .overlay {
       position: absolute;
       top: 0;
@@ -83,9 +101,9 @@
     }
 
     .overlay button {
-      width: 120px;       
-      height: 45px;
-      font-size: 0.9em;
+      width: 130px;       
+      height: 50px;
+      font-size: 1em;
       background: #6c63ff;
       color: #fff;
       border: none;
@@ -131,7 +149,7 @@
 
     <div class="figma-embed">
       <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" 
-        width="500" height="450" 
+        width="800" height="450" 
         src="https://embed.figma.com/design/2jECVTZ9Tt9ZocaKvlStHb/Untitled?node-id=0-1&embed-host=share" 
         allowfullscreen>
       </iframe>
@@ -264,7 +282,9 @@
       }
     }
 
+    // solo creamos el tablero pero invisible
     createBoard();
+
     startBtn.addEventListener('click', startGame);
   </script>
 </body>
