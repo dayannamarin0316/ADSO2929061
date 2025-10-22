@@ -4,29 +4,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Template</title>
+    <title>12-challenge-memory-game</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
+
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .game-container {
+            width: 320px;
+            margin: 40px auto;
+            background: url('imagenes/images/Rectangle 1.svg') center no-repeat;
+            background-size: cover;
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .title-img {
+            width: 90px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .stats div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .stats img {
+            width: 100px;
+            height: auto;
+        }
+
+        #seconds,
+        #moves {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            user-select: none;
+            background-color: transparent;
+            caret-color: transparent;
+        }
+
+        ::selection,
+        ::-moz-selection {
+            background: transparent !important;
+            color: inherit;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .card {
+            width: 80px;
+            height: 80px;
+            background-image: url('imagenes/images/image 8.svg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .card.flipped {
+            background-image: none;
+        }
+
+        .card.flipped img {
+            display: block;
+        }
+
+        .show-btn {
+            margin-top: 10px;
+            background-color: #c98afc;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .show-btn:hover {
+            background-color: #b170f8;
+        }
+
+        iframe {
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body class="jQuery">
     <nav>
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 
+                    0 45.3l160 160c12.5 12.5 32.8 
+                    12.5 45.3 0s12.5-32.8 
+                    0-45.3L109.2 288H416c17.7 
+                    0 32-14.3 32-32s-14.3-32-32-32H109.3l105.4-105.4c12.5-12.5 
+                    12.5-32.8 0-45.3s-32.8-12.5-45.3 
+                    0l-160 160z" />
+            </svg>
         </a>
     </nav>
+
     <main>
         <header>
-            <h1>00 - Template</h1>
-            <h2>Description</h2>
-
+            <h1>12-challenge-memory-game</h1>
         </header>
-        <section>
 
+        <section>
+            <div class="game-container">
+                <img src="imagenes/images/image 5.svg" alt="Ositos Cariñositos" class="title-img">
+
+                <div class="stats">
+                    <div>
+                        <img src="imagenes/images/Group 6.svg" alt="Seconds">
+                        <span id="seconds">0</span>
+                    </div>
+
+                    <div>
+                        <img src="imagenes/images/Group 7.svg" alt="Movements">
+                        <span id="moves">0</span>
+                    </div>
+                </div>
+
+                <div class="board" id="board"></div>
+                <button class="show-btn" id="show">Show</button>
+            </div>
+            <iframe 
+                style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+                width="450" 
+                height="300" 
+                src="https://embed.figma.com/design/P13drSgGuFIC45Ix0NKp24/Untitled?node-id=0-1&embed-host=share" 
+                allowfullscreen>
+            </iframe>
         </section>
     </main>
+
+    <script>
+        $(document).ready(function () {
+            let images = [
+                "imagenes/images/Rectangle 5.svg", "imagenes/images/Rectangle 5.svg",
+                "imagenes/images/Rectangle 4.svg", "imagenes/images/Rectangle 4.svg",
+                "imagenes/images/image 1.svg", "imagenes/images/image 1.svg",
+                "imagenes/images/image 4.svg", "imagenes/images/image 4.svg",
+                "imagenes/images/image 2.svg", "imagenes/images/image 2.svg",
+                "imagenes/images/image 3.svg", "imagenes/images/image 3.svg"
+            ];
+
+            let firstCard = null;
+            let secondCard = null;
+            let moves = 0;
+            let seconds = 0;
+            let timer = null;
+            let matchedPairs = 0;
+
+            images = images.sort(() => 0.5 - Math.random());
+
+            $.each(images, function (index, img) {
+                $("#board").append(
+                    '<div class="card" data-image="' + img + '"><img src="' + img + '" alt=""></div>'
+                );
+            });
+
+            function startTimer() {
+                if (!timer) {
+                    timer = setInterval(function () {
+                        seconds++;
+                        $("#seconds").text(seconds);
+                    }, 1000);
+                }
+            }
+
+            function resetSelection() {
+                firstCard = null;
+                secondCard = null;
+            }
+
+            $(".card").on("click", function () {
+                startTimer();
+
+                if ($(this).hasClass("flipped") || secondCard) return;
+
+                $(this).addClass("flipped");
+                $(this).find("img").fadeIn(200);
+
+                if (!firstCard) {
+                    firstCard = $(this);
+                } else {
+                    secondCard = $(this);
+                    moves++;
+                    $("#moves").text(moves);
+
+                    if (firstCard.data("image") === secondCard.data("image")) {
+                        matchedPairs++;
+                        resetSelection();
+
+                        if (matchedPairs === images.length / 2) {
+                            clearInterval(timer);
+                            setTimeout(function () {
+                                alert("🎉 ¡Ganaste! Movimientos: " + moves + " | Tiempo: " + seconds + "s");
+                            }, 400);
+                        }
+
+                    } else {
+                        setTimeout(function () {
+                            firstCard.removeClass("flipped").find("img").fadeOut(200);
+                            secondCard.removeClass("flipped").find("img").fadeOut(200);
+                            resetSelection();
+                        }, 800);
+                    }
+                }
+            });
+
+            $("#show").on("click", function () {
+                $(".card img").stop(true, true).fadeIn(400);
+                $(".card").css("pointer-events", "none");
+
+                setTimeout(function () {
+                    $(".card").not(".flipped").find("img").fadeOut(400);
+                    $(".card").css("pointer-events", "auto");
+                }, 3000);
+            });
+        });
+    </script>
 </body>
 
 </html>
