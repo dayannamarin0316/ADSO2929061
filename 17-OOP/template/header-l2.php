@@ -6,6 +6,7 @@
     <title><?=$title?></title>
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/Styles.css">
+    <link rel="stylesheet" href="../css/custom.css">
 </head>
 <body class="OOP">
     <nav>
