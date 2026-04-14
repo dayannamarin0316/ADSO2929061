@@ -33,36 +33,34 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        $validation = $request->validate([
+        $request->validate([
             'name'        => ['required', 'string'],
             'kind'        => ['required', 'string'],
             'breed'       => ['required', 'string'],
             'age'         => ['required', 'integer'],
             'weight'      => ['required', 'numeric'],
             'location'    => ['required', 'string'],
-            'description' => ['nullable', 'string'],
+            'description' => ['required', 'string'], // Cambiado a required para evitar el error SQL
             'image'       => ['required', 'image'],
         ]);
 
-        if ($validation) {
-            if ($request->hasFile('image')) {
-                $image = time() . '.' . $request->image->extension();
-                $request->image->move(public_path('images'), $image);
-            }
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+        }
 
-            $pet = new Pet;
-            $pet->name        = $request->name;
-            $pet->kind        = $request->kind;
-            $pet->breed       = $request->breed;
-            $pet->age         = $request->age;
-            $pet->weight      = $request->weight;
-            $pet->location    = $request->location;
-            $pet->description = $request->description;
-            $pet->image       = $image;
+        $pet = new Pet;
+        $pet->name        = $request->name;
+        $pet->kind        = $request->kind;
+        $pet->breed       = $request->breed;
+        $pet->age         = $request->age;
+        $pet->weight      = $request->weight;
+        $pet->location    = $request->location;
+        $pet->description = $request->description;
+        $pet->image       = $imageName;
 
-            if ($pet->save()) {
-                return redirect('pets')->with('message', 'The Pet: ' . $pet->name . ' was added successfully.');
-            }
+        if ($pet->save()) {
+            return redirect('pets')->with('message', 'The Pet: ' . $pet->name . ' was added successfully.');
         }
     }
 
@@ -87,39 +85,37 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-        $validation = $request->validate([
+        $request->validate([
             'name'        => ['required', 'string'],
             'kind'        => ['required', 'string'],
             'breed'       => ['required', 'string'],
             'age'         => ['required', 'integer'],
             'weight'      => ['required', 'numeric'],
             'location'    => ['required', 'string'],
-            'description' => ['nullable', 'string'],
+            'description' => ['required', 'string'], // Cambiado a required para evitar el error SQL
         ]);
 
-        if ($validation) {
-            if ($request->hasFile('image')) {
-                $image = time() . '.' . $request->image->extension();
-                $request->image->move(public_path('images'), $image);
-                if ($request->originimage != 'no-image.png' && file_exists(public_path('images/' . $pet->image))) {
-                    unlink(public_path('images/' . $pet->image));
-                }
-            } else {
-                $image = $request->originimage;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            
+            // Borramos la imagen anterior si existe y no es la de por defecto
+            if ($pet->image != 'no-image.png' && file_exists(public_path('images/' . $pet->image))) {
+                unlink(public_path('images/' . $pet->image));
             }
+            $pet->image = $imageName;
+        }
 
-            $pet->name        = $request->name;
-            $pet->kind        = $request->kind;
-            $pet->breed       = $request->breed;
-            $pet->age         = $request->age;
-            $pet->weight      = $request->weight;
-            $pet->location    = $request->location;
-            $pet->description = $request->description;
-            $pet->image       = $image;
+        $pet->name        = $request->name;
+        $pet->kind        = $request->kind;
+        $pet->breed       = $request->breed;
+        $pet->age         = $request->age;
+        $pet->weight      = $request->weight;
+        $pet->location    = $request->location;
+        $pet->description = $request->description;
 
-            if ($pet->save()) {
-                return redirect('pets')->with('message', 'The Pet: ' . $pet->name . ' was edited successfully.');
-            }
+        if ($pet->save()) {
+            return redirect('pets')->with('message', 'The Pet: ' . $pet->name . ' was edited successfully.');
         }
     }
 
@@ -131,6 +127,7 @@ class PetController extends Controller
         if ($pet->image != 'no-image.png' && file_exists(public_path('images/' . $pet->image))) {
             unlink(public_path('images/' . $pet->image));
         }
+        
         if ($pet->delete()) {
             return redirect('pets')->with('message', 'The Pet: ' . $pet->name . ' was deleted successfully.');
         }
