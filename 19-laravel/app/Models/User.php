@@ -18,9 +18,16 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'document',
+        'fullname',
+        'gender',
+        'birthdate',
+        'photo',
+        'phone',
         'email',
         'password',
+        'active',
+        'role'
     ];
 
     /**
@@ -45,4 +52,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //Relationships
+    //User has many adoptions
+
+    public function adoptions(){
+        return $this->hasMany(Adoption::class);
+    }
+
+    //search by scope
+    public function scopenames($users, $q){
+        if(trim($q)){
+            $users->where('fullname','LIKE', "%$q%")->orWhere('email','LIKE',"%$q%");
+        }
+    }    
 }
